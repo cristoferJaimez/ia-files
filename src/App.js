@@ -1,25 +1,52 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      btn: "true",
+    };
+  }
+
+  //other functions
+  buttonStart = (e) => {
+    document.getElementById("file").className = "d-none";
+    document.getElementById("shell").className = "window";
+    
+  };
+
+  render() {
+    return (
+      <div className="App-header ">
+        <label
+          id="file"
+          className="btn btn-success"
+          htmlFor="typefile"
+          onClick={this.buttonStart}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+          Upload <i className="fas fa-cloud-upload-alt"></i>
+        </label>
+        <input
+          id="typefile"
+          type="file"
+          className="btn btn-outline-success  d-none"
+        />
+
+        <div className="window d-none" id="shell">
+          <div className="terminal">
+            <div id="process_msm" className=""></div>
+          </div>
+        </div>
+
+        <button className="btn btn-success btn-sm mt-2 d-none">
+          {" "}
+          Dowload xlsx <i className="fas fa-cloud-download-alt"></i>
+        </button>
+      </div>
+    );
+  }
 }
 
 export default App;
